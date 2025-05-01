@@ -1,0 +1,60 @@
+.profile {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-areas: "avatar info . addbutton";
+  align-items: center;
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  background-image: url(../images/jacobo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 30px;
+  grid-area: avatar;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* margin-right: auto; */
+  grid-area: info;
+}
+
+.profile__info-container {
+  display: flex;
+  align-items: first baseline;
+  gap: 18px;
+}
+
+.profile__name {
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #ffffff;
+}
+
+.profile__edit-button {
+  width: 24px;
+  height: 24px;
+}
+
+.profile__occupation {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  grid-area: addbutton;
+}

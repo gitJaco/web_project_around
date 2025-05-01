@@ -1,0 +1,50 @@
+.footer {
+  width: calc(100% - 400px);
+}
+
+.footer__text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 760px) {
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "avatar"
+      "info"
+      "addbutton";
+    justify-items: center;
+  }
+
+  .profile__avatar {
+    margin: 0;
+  }
+
+  .profile__info {
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .profile__name {
+    font-size: 22px;
+    line-height: 100%;
+  }
+
+  .profile__occupation {
+    font-size: 14px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__add-button {
+    margin-top: 36px;
+    width: 282px;
+    object-position: center;
+  }
+}
