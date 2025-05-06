@@ -10,6 +10,16 @@ HTML5, CSS3, Flexbox y grid. La principal caracteristica de este
 proyecto es que por primera vez se utilo javascript y manejo del
 DOM basico.
 
+# Tecnologias y caracteristicas utilizadas
+
+-HTML5
+-CSS3
+-Flexbox
+-Grid
+-Medidas Relativas
+-Box-shadow
+-Javascript
+
 # Autor
 
 Jacobo De Hoyos Reyes
