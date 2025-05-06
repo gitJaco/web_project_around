@@ -34,23 +34,55 @@
             </div>
             <p class="profile__occupation">Desarrollador Web</p>
           </div>
+
           <img
             class="profile__add-button"
             src="./images/Add Button.png"
             alt="Boton para añadir"
           />
         </section>
+        <section class="popup">
+          <div class="popup__container">
+            <img
+              src="./images/Close Icon.png"
+              alt="Icono para cerrar la ventana emergente"
+              class="popup__close-button"
+            />
+            <h2 class="popup__title">Editar perfil</h2>
+            <form class="popup__form">
+              <fieldset class="popup__form-fieldset">
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Nombre"
+                  name="name"
+                  class="popup__form-input popup__form-input_number_one"
+                  required
+                />
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Acerca de mí"
+                  name="name"
+                  class="popup__form-input popup__form-input_number_two"
+                  required
+                />
+              </fieldset>
+              <button type="submit" class="popup__form-button">Guardar</button>
+            </form>
+          </div>
+        </section>
         <section class="elements content__elements">
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image1.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
               <h2 class="element__name">Valle de Yosemite</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -59,14 +91,14 @@
 
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image2.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
-              <h2 class="element__name">Valle de Yosemite</h2>
+              <h2 class="element__name">Lago Louise</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -75,14 +107,14 @@
 
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image3.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
-              <h2 class="element__name">Valle de Yosemite</h2>
+              <h2 class="element__name">Montañas Calvas</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -91,14 +123,14 @@
 
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image4.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
-              <h2 class="element__name">Valle de Yosemite</h2>
+              <h2 class="element__name">Latemar</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -107,14 +139,14 @@
 
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image5.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
-              <h2 class="element__name">Valle de Yosemite</h2>
+              <h2 class="element__name">Vanois National...</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -123,14 +155,14 @@
 
           <div class="element">
             <img
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="./images/image6.jpg"
               alt="Imagen de paisaje"
               class="element__image"
             />
             <div class="element__info-container">
-              <h2 class="element__name">Valle de Yosemite</h2>
+              <h2 class="element__name">Lago di Braies</h2>
               <img
-                src="./images/like.png"
+                src="./images/like2.svg"
                 alt="Icono de corazon para dar like"
                 class="element__like"
               />
@@ -142,5 +174,7 @@
         <p class="footer__text">© 2025 Around The U.S.</p>
       </footer>
     </div>
+
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

@@ -1,5 +1,8 @@
 .element {
   width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .element__image {
@@ -26,4 +29,14 @@
 .element__like {
   width: 21px;
   height: 19px;
+}
+
+.element__like:hover {
+  cursor: pointer;
+  filter: invert(73%) sepia(45%) saturate(7%) hue-rotate(314deg) brightness(97%)
+    contrast(99%);
+}
+
+.element__like:active {
+  background-color: black;
 }

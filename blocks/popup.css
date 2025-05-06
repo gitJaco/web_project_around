@@ -1,0 +1,86 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__container {
+  position: relative;
+  width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  padding: 34px 36px 36px 36px;
+}
+
+.popup__close-button {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+}
+
+.popup__close-button:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.popup__title {
+  margin: 0 0 54px 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+
+.popup__form-fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.popup__form-input {
+  width: 100%;
+  color: #c4c4c4;
+  border: none;
+  padding-bottom: 13px;
+  border-bottom: 1px solid;
+}
+
+.popup__form-input::placeholder {
+  color: #c4c4c4;
+}
+
+.popup__form-input_number_one {
+  margin-bottom: 30px;
+}
+
+.popup__form-input_number_two {
+  margin-bottom: 48px;
+}
+
+.popup__form-button {
+  width: 100%;
+  border: none;
+  color: #c4c4c4;
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  padding: 14px 124px 18px 125px;
+}
+
+.popup__form-button:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.popup__form-button_active {
+  background-color: #000;
+}
+
+.popup_opened {
+  display: flex;
+}
