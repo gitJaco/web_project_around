@@ -8,6 +8,7 @@
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 4;
 }
 
 .popup__container {
@@ -78,6 +79,10 @@
 }
 
 .popup__form-button_active {
+  background-color: #000;
+}
+
+.popup__form-button_add {
   background-color: #000;
 }
 

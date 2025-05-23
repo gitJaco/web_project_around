@@ -87,6 +87,22 @@
     grid-template-columns: 1fr;
   }
 
+  .image-popup__container {
+    width: calc(100% - 38px);
+    margin: 0 19px;
+  }
+
+  .image-popup__image {
+    width: 100%;
+  }
+
+  .image-popup__close {
+    width: 26px;
+    height: 26px;
+    right: 0;
+    top: -40px;
+  }
+
   .footer {
     width: calc(100% - 38px);
     min-width: 320px;
