@@ -12,7 +12,6 @@
 @media screen and (max-width: 950px) {
   .header {
     width: 100%;
-    min-width: 320px;
   }
 
   .logo {
@@ -21,7 +20,6 @@
 
   .content {
     width: calc(100% - 38px);
-    min-width: 320px;
   }
 
   .profile {
@@ -58,22 +56,10 @@
 
   .profile__add-button {
     margin-top: 36px;
-    width: 100%;
+    width: 320px;
     height: 50px;
-    /* object-fit: contain; */
-  }
-
-  .popup__container {
-    width: calc(100% - 38px);
-    margin: 0 19px;
-  }
-
-  .popup__title {
-    margin: 0;
-  }
-
-  .popup__form-input_number_one {
-    margin-top: 76px;
+    aspect-ratio: auto;
+    image-rendering: pixelated;
   }
 
   .popup__close-button {
@@ -84,7 +70,7 @@
   }
 
   .elements {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .image-popup__container {
@@ -105,6 +91,35 @@
 
   .footer {
     width: calc(100% - 38px);
-    min-width: 320px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .elements {
+    grid-template-columns: 1fr;
+  }
+
+  .element__image {
+    height: 30vh;
+  }
+
+  .popup__container {
+    width: calc(100% - 38px);
+    margin: 0 19px;
+    box-sizing: border-box;
+  }
+
+  .popup__form-button {
+    padding: 14px 64px 18px 65px;
+  }
+
+  .image-popup__image {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 398px) {
+  .profile__add-button {
+    width: 100%;
   }
 }
