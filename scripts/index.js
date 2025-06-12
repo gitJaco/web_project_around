@@ -6,6 +6,13 @@ const formElement2 = document.querySelector(".popup_add");
 const formBtn = formElement.querySelector(".popup__form-button");
 const addBtn = document.querySelector(".profile__add-button");
 const addCloseBtn = formElement2.querySelector(".popup__close-button");
+const imagePopup = document.querySelector(".image-popup");
+const popup = document.querySelector(".popup");
+const popup2 = document.querySelector(".popup_add");
+const popupContainer = document.querySelector(".popup__container");
+const popupContainer2 = document.querySelector(".popup__container2");
+const imageContainer = document.querySelector(".image-popup__container");
+
 let initialCards = [
   {
     name: "Valle de Yosemite",
@@ -114,20 +121,10 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
 
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileOccupation.textContent;
+
   handleEditWindow();
-}
-
-function handleFormButton() {
-  const inputs = formElement.querySelectorAll("input[required]");
-  const allFilled = Array.from(inputs).every(
-    (input) => input.value.trim() !== ""
-  );
-
-  if (allFilled) {
-    formBtn.classList.add("popup__form-button_active");
-  } else {
-    formBtn.classList.remove("popup__form-button_active");
-  }
 }
 
 function handleAddWindow() {
@@ -152,6 +149,35 @@ function handleTrash(evt) {
   console.log(evt.target);
 }
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    popupEl.classList.remove("popup_opened");
+    formElement2.classList.remove("popup_opened");
+    imagePopup.classList.remove("image-popup_oppened");
+  }
+}
+
+function handle() {
+  popupEl.classList.remove("popup_opened");
+}
+
+function handleContainer(evt) {
+  evt.stopPropagation();
+}
+
+function handle2() {
+  formElement2.classList.remove("popup_opened");
+}
+
+function handleContainer2(evt) {
+  evt.stopPropagation();
+}
+
+function handleImage(evt) {
+  if (evt.target === imagePopup)
+    imagePopup.classList.remove("image-popup_oppened");
+}
+
 setAllCards();
 
 editBtn.addEventListener("click", handleEditWindow);
@@ -159,5 +185,10 @@ closeBtn.addEventListener("click", handleEditWindow);
 addBtn.addEventListener("click", handleAddWindow);
 addCloseBtn.addEventListener("click", handleAddWindow);
 formElement.addEventListener("submit", handleProfileFormSubmit);
-formElement.addEventListener("input", handleFormButton);
 formElement2.addEventListener("submit", handleForm2Button);
+document.addEventListener("keydown", handleEscape);
+popup.addEventListener("click", handle);
+popupContainer.addEventListener("click", handleContainer);
+popup2.addEventListener("click", handle2);
+popupContainer2.addEventListener("click", handleContainer2);
+imagePopup.addEventListener("click", handleImage);

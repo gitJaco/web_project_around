@@ -48,59 +48,85 @@
               class="popup__close-button"
             />
             <h2 class="popup__title">Editar perfil</h2>
-            <form class="popup__form">
+            <form class="popup__form" name="editForm" novalidate>
               <fieldset class="popup__form-fieldset">
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Nombre"
-                  name="name"
-                  class="popup__form-input popup__form-input_number_one"
-                  required
-                />
-                <input
-                  type="text"
-                  id="job"
-                  placeholder="Acerca de mí"
-                  name="job"
-                  class="popup__form-input popup__form-input_number_two"
-                  required
-                />
+                <div class="popup__form-group">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Nombre"
+                    name="name"
+                    class="popup__form-input popup__form-input_number_one"
+                    minlength="2"
+                    maxlength="40"
+                    required
+                  />
+                  <span class="name-error input-error_active"></span>
+                </div>
+                <div class="popup__form-group">
+                  <input
+                    type="text"
+                    id="job"
+                    placeholder="Acerca de mí"
+                    name="job"
+                    class="popup__form-input popup__form-input_number_two"
+                    minlength="2"
+                    maxlength="200"
+                    required
+                  />
+                  <span class="job-error input-error_active"></span>
+                </div>
               </fieldset>
-              <button type="submit" class="popup__form-button">Guardar</button>
+              <button
+                type="submit"
+                class="popup__form-button popup__form-button_inactive"
+                name="btn"
+                disabled
+              >
+                Guardar
+              </button>
             </form>
           </div>
         </section>
         <section class="popup popup_add">
-          <div class="popup__container">
+          <div class="popup__container popup__container2">
             <img
               src="./images/CloseIcon.png"
               alt="Icono para cerrar la ventana emergente"
               class="popup__close-button"
             />
             <h2 class="popup__title">Nuevo Lugar</h2>
-            <form class="popup__form">
+            <form class="popup__form" name="addForm" novalidate>
               <fieldset class="popup__form-fieldset">
-                <input
-                  type="text"
-                  id="title"
-                  placeholder="Titulo"
-                  name="title"
-                  class="popup__form-input popup__form-input_number_one"
-                  required
-                />
-                <input
-                  type="text"
-                  id="url"
-                  placeholder="Enlace de la imagen"
-                  name="url"
-                  class="popup__form-input popup__form-input_number_two"
-                  required
-                />
+                <div class="popup__form-group">
+                  <input
+                    type="text"
+                    id="title"
+                    placeholder="Titulo"
+                    name="title"
+                    class="popup__form-input popup__form-input_number_one"
+                    minlength="2"
+                    maxlength="30"
+                    required
+                  />
+                  <span class="title-error input-error_active"></span>
+                </div>
+                <div class="popup__form-group">
+                  <input
+                    type="url"
+                    id="url"
+                    placeholder="Enlace de la imagen"
+                    name="url"
+                    class="popup__form-input popup__form-input_number_two"
+                    required
+                  />
+                  <span class="url-error input-error_active"></span>
+                </div>
               </fieldset>
               <button
                 type="submit"
-                class="popup__form-button popup__form-button_add"
+                class="popup__form-button popup__form-button_inactive"
+                disabled
               >
                 Crear
               </button>
@@ -150,5 +176,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

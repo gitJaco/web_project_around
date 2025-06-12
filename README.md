@@ -1,4 +1,4 @@
-# Titulo del proyecto 8
+# Titulo del proyecto 9
 
 TripleTen web_project_around
 
@@ -8,7 +8,8 @@ Este es el septimo proyecto del curso, llamado web project around
 que trata de los lugares que son explorados en US. Se utilizo
 HTML5, CSS3, Flexbox y grid. La principal caracteristica de este
 proyecto es que por primera vez se utilo javascript y manejo del
-DOM basico. Tambien se utilizaron arrays y sus metodos.
+DOM basico. Se utilzaron formularios
+y validacion de formularios. Tambien se utilizaron arrays y sus metodos.
 
 # Tecnologias y caracteristicas utilizadas
 
@@ -21,6 +22,8 @@ DOM basico. Tambien se utilizaron arrays y sus metodos.
 -Javascript
 -Manejo del DOM
 -Arrays y sus metodos
+-Formularios
+-Validacion de formularios
 
 # Autor
 
