@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { handleEditWindow } from "./util.js";
-import { handleAddWindow } from "./util.js";
+import { handleEditWindow } from "./utils.js";
+import { handleAddWindow } from "./utils.js";
 const popupEl = document.querySelector(".popup");
 const formElement = popupEl.querySelector(".popup__form");
 const formElement2 = document.querySelector(".popup_add");
@@ -95,10 +95,6 @@ function handleForm2Button(evt) {
   initialCards.unshift(placeObj);
   setCards();
   handleAddWindow();
-}
-
-function handleTrash(evt) {
-  console.log(evt.target);
 }
 
 function handleEscape(evt) {
