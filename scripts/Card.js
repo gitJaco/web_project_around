@@ -28,12 +28,12 @@ export default class Card {
   _setTrash() {
     const trashElement = this._element.querySelector(".element__trash");
     trashElement.addEventListener("click", () => {
-      const elements = document.querySelectorAll(".element");
-      elements.forEach((el, index) => {
-        if (el === this._element) {
-          initialCards.splice(index, 1);
-        }
-      });
+      //   const elements = document.querySelectorAll(".element");
+      //   elements.forEach((el, index) => {
+      //     if (el === this._element) {
+      //       initialCards.splice(index, 1);
+      //     }
+      //   });
       this._element.remove();
     });
   }

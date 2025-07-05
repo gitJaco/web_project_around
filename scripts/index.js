@@ -51,13 +51,23 @@ const formList = Array.from(
   document.querySelectorAll(configurationObject.formSelector)
 );
 
-function setCards() {
-  initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link);
-    const cardElement = card.generateCard(initialCards);
+// function setCards() {
+//   initialCards.forEach((item) => {
+//     const card = new Card(item.name, item.link);
+//     const cardElement = card.generateCard(initialCards);
 
-    document.querySelector(".elements").append(cardElement);
-  });
+//     document.querySelector(".elements").append(cardElement);
+//   });
+// }
+
+initialCards.forEach((item) => {
+  addCard(item.name, item.link);
+});
+
+function addCard(name, link) {
+  const card = new Card(name, link);
+  const cardElement = card.generateCard();
+  document.querySelector(".elements").prepend(cardElement);
 }
 
 formList.forEach((formEl) => {
@@ -87,13 +97,14 @@ function handleForm2Button(evt) {
   evt.preventDefault();
   let titleInput = formElement2.querySelector(".popup__form-input_number_one");
   let urlInput = formElement2.querySelector(".popup__form-input_number_two");
-  let placeObj = { name: titleInput.value, link: urlInput.value };
-  const elements = document.querySelectorAll(".element");
-  elements.forEach((el) => {
-    el.remove();
-  });
-  initialCards.unshift(placeObj);
-  setCards();
+  // let placeObj = { name: titleInput.value, link: urlInput.value };
+  // const elements = document.querySelectorAll(".element");
+  // elements.forEach((el) => {
+  //   el.remove();
+  // });
+  // initialCards.unshift(placeObj);
+  // setCards();
+  addCard(titleInput.value, urlInput.value);
   handleAddWindow();
 }
 
@@ -126,7 +137,7 @@ function handleImage(evt) {
     imagePopup.classList.remove("image-popup_oppened");
 }
 
-setCards();
+// setCards();
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
 formElement2.addEventListener("submit", handleForm2Button);
