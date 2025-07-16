@@ -1,4 +1,3 @@
-import { initialCards } from "./index.js";
 export default class Card {
   constructor(title, link) {
     this._title = title;
@@ -15,63 +14,54 @@ export default class Card {
   }
 
   _setLike() {
-    const likeElement = this._element.querySelector(".element__like");
-    likeElement.addEventListener("click", function () {
-      if (likeElement.src.includes("like2.svg")) {
-        likeElement.src = "./images/Union.svg";
-      } else {
-        likeElement.src = "./images/like2.svg";
-      }
-    });
+    if (this._likeElement.src.includes("like2.svg")) {
+      this._likeElement.src = "./images/Union.svg";
+    } else {
+      this._likeElement.src = "./images/like2.svg";
+    }
   }
 
   _setTrash() {
-    const trashElement = this._element.querySelector(".element__trash");
-    trashElement.addEventListener("click", () => {
-      //   const elements = document.querySelectorAll(".element");
-      //   elements.forEach((el, index) => {
-      //     if (el === this._element) {
-      //       initialCards.splice(index, 1);
-      //     }
-      //   });
-      this._element.remove();
-    });
+    this._element.remove();
   }
 
   _setImage() {
-    const imageElement = this._element.querySelector(".element__image");
-    imageElement.addEventListener("click", () => {
-      const popTemplate = document.querySelector(
-        "#image-popup__template"
-      ).content;
-      const popElement = popTemplate
-        .querySelector(".image-popup__container")
-        .cloneNode(true);
-      popElement.querySelector(".image-popup__image").src = this._link;
-      popElement.querySelector(".image-popup__title").textContent = this._title;
-      const imagePopup = document.querySelector(".image-popup");
-      imagePopup.classList.toggle("image-popup_oppened");
-      const all = document.querySelectorAll(".image-popup__container");
-      all.forEach((item) => {
-        item.remove();
-      });
-      imagePopup.append(popElement);
-      const popClose = popElement.querySelector(".image-popup__close");
-      popClose.addEventListener("click", function () {
-        imagePopup.classList.toggle("image-popup_oppened");
-      });
+    const imagePopup = document.querySelector(".image-popup");
+    const image = document.querySelector(".image-popup__image");
+    const title = document.querySelector(".image-popup__title");
+    const close = document.querySelector(".image-popup__close");
+
+    imagePopup.classList.toggle("image-popup_oppened");
+    image.src = this._link;
+    title.textContent = this._title;
+    close.addEventListener("click", () => {
+      imagePopup.classList.remove("image-popup_oppened");
+    });
+  }
+
+  _setEventListeners() {
+    this._likeElement.addEventListener("click", () => {
+      this._setLike();
+    });
+    this._trashElement.addEventListener("click", () => {
+      this._setTrash();
+    });
+    this._cardImage.addEventListener("click", () => {
+      this._setImage();
     });
   }
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardName = this._element.querySelector(".element__name");
+    this._cardImage = this._element.querySelector(".element__image");
+    this._likeElement = this._element.querySelector(".element__like");
+    this._trashElement = this._element.querySelector(".element__trash");
 
-    this._element.querySelector(".element__name").textContent = this._title;
-    this._element.querySelector(".element__image").src = this._link;
+    this._cardName.textContent = this._title;
+    this._cardImage.src = this._link;
 
-    this._setLike();
-    this._setTrash();
-    this._setImage();
+    this._setEventListeners();
 
     return this._element;
   }
