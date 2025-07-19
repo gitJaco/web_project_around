@@ -73,16 +73,16 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .image-popup__container {
+  .popup__image-container {
     width: calc(100% - 38px);
     margin: 0 19px;
   }
 
-  .image-popup__image {
+  .popup__image {
     width: 100%;
   }
 
-  .image-popup__close {
+  .popup__close-button_type_image {
     width: 26px;
     height: 26px;
     right: 0;
@@ -113,7 +113,7 @@
     padding: 14px 64px 18px 65px;
   }
 
-  .image-popup__image {
+  .popup__image {
     height: 350px;
   }
 }

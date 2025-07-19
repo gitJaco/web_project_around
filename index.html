@@ -40,15 +40,19 @@
             alt="Boton para añadir"
           />
         </section>
-        <section class="popup">
-          <div class="popup__container">
+        <section class="popup popup_type_edit">
+          <div class="popup__container popup__edit-container">
             <img
               src="./images/CloseIcon.png"
               alt="Icono para cerrar la ventana emergente"
               class="popup__close-button"
             />
             <h2 class="popup__title">Editar perfil</h2>
-            <form class="popup__form" name="editForm" novalidate>
+            <form
+              class="popup__form popup__form_edit"
+              name="editForm"
+              novalidate
+            >
               <fieldset class="popup__form-fieldset">
                 <div class="popup__form-group">
                   <input
@@ -89,14 +93,14 @@
           </div>
         </section>
         <section class="popup popup_add">
-          <div class="popup__container popup__container2">
+          <div class="popup__container popup__add-container">
             <img
               src="./images/CloseIcon.png"
               alt="Icono para cerrar la ventana emergente"
               class="popup__close-button"
             />
             <h2 class="popup__title">Nuevo Lugar</h2>
-            <form class="popup__form" name="addForm" novalidate>
+            <form class="popup__form popup__form_add" name="addForm" novalidate>
               <fieldset class="popup__form-fieldset">
                 <div class="popup__form-group">
                   <input
@@ -152,22 +156,20 @@
               </div></div
           ></template>
         </section>
-        <section class="image-popup">
-          <!-- <template id="image-popup__template"> -->
-          <div class="image-popup__container">
+        <section class="popup popup_type_image">
+          <div class="popup__image-container">
             <img
               src="./images/CloseIcon.png"
               alt="Imagen para cerrar la ventana"
-              class="image-popup__close"
+              class="popup__close-button popup__close-button_type_image"
             />
             <img
               src="./images/image1.jpg"
               alt="Imagen aumentada de paisaje"
-              class="image-popup__image"
+              class="popup__image"
             />
-            <p class="image-popup__title">titulo</p>
+            <p class="popup__image-title">titulo</p>
           </div>
-          <!-- </template> -->
         </section>
       </main>
       <footer class="footer content__footer">
@@ -176,8 +178,6 @@
     </div>
 
     <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
     <script type="module" src="./scripts/utils.js"></script>
   </body>
 </html>

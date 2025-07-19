@@ -20,10 +20,26 @@
   padding: 34px 36px 36px 36px;
 }
 
+.popup__image-container {
+  position: relative;
+}
+
+.popup__image {
+  width: 500px;
+  height: 500px;
+}
+
 .popup__close-button {
   position: absolute;
   top: -35px;
   right: -35px;
+}
+
+.popup__image-title {
+  color: #fff;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
 }
 
 .popup__close-button:hover {

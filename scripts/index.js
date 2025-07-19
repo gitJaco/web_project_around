@@ -1,17 +1,11 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { handleEditWindow } from "./utils.js";
-import { handleAddWindow } from "./utils.js";
-const popupEl = document.querySelector(".popup");
-const formElement = popupEl.querySelector(".popup__form");
-const formElement2 = document.querySelector(".popup_add");
-const imagePopup = document.querySelector(".image-popup");
-const popup = document.querySelector(".popup");
-const popup2 = document.querySelector(".popup_add");
-const popupContainer = document.querySelector(".popup__container");
-const popupContainer2 = document.querySelector(".popup__container2");
+import Section from "./Section.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
 
-export let initialCards = [
+let initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -51,81 +45,63 @@ const formList = Array.from(
   document.querySelectorAll(configurationObject.formSelector)
 );
 
-initialCards.forEach((item) => {
-  addCard(item.name, item.link);
-});
-
-function addCard(name, link) {
-  const card = new Card(name, link);
-  const cardElement = card.generateCard();
-  document.querySelector(".elements").prepend(cardElement);
-}
+const cardList = new Section(
+  {
+    data: initialCards,
+    renderer: (item) => {
+      const card = new Card({
+        name: item.name,
+        link: item.link,
+        handleCardClick: (item) => {
+          const image = new PopupWithImage(".popup_type_image");
+          image.open(item);
+          image.setEventListeners();
+        },
+      });
+      const cardElement = card.generateCard();
+      cardList.addItemStart(cardElement);
+    },
+  },
+  ".elements"
+);
+cardList.renderItems();
 
 formList.forEach((formEl) => {
   const valid = new FormValidator(configurationObject, formEl);
   valid.enableValidation();
 });
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+const popupFormAdd = new PopupWithForm({
+  popupSelector: ".popup_add",
+  formSelector: ".popup__form_add",
+  handleFormSubmit: ({ title: name, url: link }) => {
+    const card = new Card({
+      name: name,
+      link: link,
+      handleCardClick: (item) => {
+        const image = new PopupWithImage(".popup_type_image");
+        image.open(item);
+        image.setEventListeners();
+      },
+    });
+    const cardElement = card.generateCard();
+    cardList.addItemStart(cardElement);
+  },
+});
 
-  let nameInput = formElement.querySelector(".popup__form-input_number_one");
-  let jobInput = formElement.querySelector(".popup__form-input_number_two");
+popupFormAdd.setEventListeners();
 
-  let profileName = document.querySelector(".profile__name");
-  let profileOccupation = document.querySelector(".profile__occupation");
+const popupFormEdit = new PopupWithForm({
+  popupSelector: ".popup_type_edit",
+  formSelector: ".popup__form_edit",
+  handleFormSubmit: (item) => {
+    const user = new UserInfo({
+      nameSelector: ".profile__name",
+      jobSelector: ".profile__occupation",
+    });
+    user.getUserInfo(item);
+    user.setUserInfo();
+  },
+});
 
-  profileName.textContent = nameInput.value;
-  profileOccupation.textContent = jobInput.value;
-
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileOccupation.textContent;
-
-  handleEditWindow();
-}
-
-function handleForm2Button(evt) {
-  evt.preventDefault();
-  let titleInput = formElement2.querySelector(".popup__form-input_number_one");
-  let urlInput = formElement2.querySelector(".popup__form-input_number_two");
-  addCard(titleInput.value, urlInput.value);
-  handleAddWindow();
-}
-
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    popupEl.classList.remove("popup_opened");
-    formElement2.classList.remove("popup_opened");
-    imagePopup.classList.remove("image-popup_oppened");
-  }
-}
-
-function handle() {
-  popupEl.classList.remove("popup_opened");
-}
-
-function handleContainer(evt) {
-  evt.stopPropagation();
-}
-
-function handle2() {
-  formElement2.classList.remove("popup_opened");
-}
-
-function handleContainer2(evt) {
-  evt.stopPropagation();
-}
-
-function handleImage(evt) {
-  if (evt.target === imagePopup)
-    imagePopup.classList.remove("image-popup_oppened");
-}
-
-formElement.addEventListener("submit", handleProfileFormSubmit);
-formElement2.addEventListener("submit", handleForm2Button);
-document.addEventListener("keydown", handleEscape);
-popup.addEventListener("click", handle);
-popupContainer.addEventListener("click", handleContainer);
-popup2.addEventListener("click", handle2);
-popupContainer2.addEventListener("click", handleContainer2);
-imagePopup.addEventListener("click", handleImage);
+popupFormEdit.setEventListeners();
