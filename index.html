@@ -21,7 +21,15 @@
 
       <main class="content">
         <section class="profile content__profile">
-          <div class="profile__avatar"></div>
+          <div class="profile__avatar">
+            <div class="profile__avatar-container-button">
+              <img
+                src="./images/editAvtar.png"
+                alt="Boton de edicion del avatar"
+                class="profile__avatar-button"
+              />
+            </div>
+          </div>
           <div class="profile__info">
             <div class="profile__info-container">
               <h1 class="profile__name">Jacobo De Hoyos</h1>
@@ -70,15 +78,15 @@
                 <div class="popup__form-group">
                   <input
                     type="text"
-                    id="job"
+                    id="about"
                     placeholder="Acerca de mí"
-                    name="job"
+                    name="about"
                     class="popup__form-input popup__form-input_number_two"
                     minlength="2"
                     maxlength="200"
                     required
                   />
-                  <span class="job-error input-error_active"></span>
+                  <span class="about-error input-error_active"></span>
                 </div>
               </fieldset>
               <button
@@ -137,6 +145,57 @@
             </form>
           </div>
         </section>
+        <section class="popup popup_type_delete">
+          <div class="popup__container popup__delete-container">
+            <img
+              src="./images/CloseIcon.png"
+              alt="Icono para cerrar la ventana emergente"
+              class="popup__close-button"
+            />
+            <h2 class="popup__title">¿Estás seguro?</h2>
+            <form class="popup__form popup__form_delete" name="deleteForm">
+              <button
+                type="submit"
+                class="popup__form-button popup__form-button_active"
+              >
+                Sí
+              </button>
+            </form>
+          </div>
+        </section>
+        <section class="popup popup_type_avatar">
+          <div class="popup__container popup__delete-container">
+            <img
+              src="./images/CloseIcon.png"
+              alt="Icono para cerrar la ventana emergente"
+              class="popup__close-button"
+            />
+            <h2 class="popup__title">Cambiar foto de perfil</h2>
+            <form
+              class="popup__form popup__form_avatar"
+              name="avatarForm"
+              novalidate
+            >
+              <div class="popup__form-group">
+                <input
+                  class="popup__form-input"
+                  type="url"
+                  id="avatar"
+                  name="avatar"
+                  placeholder="Enlace de la imagen"
+                />
+                <span class="avatar-error input-error_active"></span>
+              </div>
+              <button
+                type="submit"
+                class="popup__form-button popup__form-button_inactive"
+                disabled
+              >
+                Guardar
+              </button>
+            </form>
+          </div>
+        </section>
         <section class="elements content__elements">
           <template id="card__template">
             <div class="element">
@@ -178,6 +237,6 @@
     </div>
 
     <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/utils.js"></script>
+    <!-- <script type="module" src="./scripts/utils.js"></script> -->
   </body>
 </html>

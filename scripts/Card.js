@@ -1,8 +1,20 @@
 export default class Card {
-  constructor({ name, link, handleCardClick }) {
+  constructor({
+    name,
+    link,
+    id,
+    isLiked,
+    handleCardClick,
+    handleTrash,
+    handleLike,
+  }) {
     this._title = name;
     this._link = link;
+    this._id = id;
+    this._isLiked = isLiked;
     this._handleCardClick = handleCardClick;
+    this._handleTrash = handleTrash;
+    this._handleLike = handleLike;
   }
 
   _getTemplate() {
@@ -14,12 +26,13 @@ export default class Card {
     return cardElement;
   }
 
-  _setLike() {
-    if (this._likeElement.src.includes("like2.svg")) {
+  isLiked(res) {
+    if (res.isLiked) {
       this._likeElement.src = "./images/Union.svg";
     } else {
       this._likeElement.src = "./images/like2.svg";
     }
+    this._isLiked = res.isLiked;
   }
 
   _setTrash() {
@@ -28,10 +41,13 @@ export default class Card {
 
   _setEventListeners() {
     this._likeElement.addEventListener("click", () => {
-      this._setLike();
+      this._handleLike(this._id, this._isLiked);
+      console.log(this._isLiked);
     });
     this._trashElement.addEventListener("click", () => {
-      this._setTrash();
+      const popupConfirmation = document.querySelector(".popup_type_delete");
+      popupConfirmation.classList.add("popup_opened");
+      this._handleTrash(this._element, this._id);
     });
     this._cardImage.addEventListener("click", () => {
       this._handleCardClick({ name: this._title, link: this._link });
@@ -47,6 +63,10 @@ export default class Card {
 
     this._cardName.textContent = this._title;
     this._cardImage.src = this._link;
+
+    this._likeElement.src = this._isLiked
+      ? "./images/Union.svg"
+      : "./images/like2.svg";
 
     this._setEventListeners();
 
