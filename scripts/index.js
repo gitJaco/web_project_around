@@ -20,6 +20,45 @@ const formList = Array.from(
   document.querySelectorAll(configurationObject.formSelector)
 );
 
+function createCard(data) {
+  const card = new Card({
+    name: data.name,
+    link: data.link,
+    id: data._id,
+    isLiked: data.isLiked,
+    handleCardClick: (item) => {
+      const image = new PopupWithImage(".popup_type_image");
+      image.open(item);
+      image.setEventListeners();
+    },
+    handleTrash: (element, id) => {
+      const popupConfirmation = new PopupWithConfirmation(
+        ".popup_type_delete",
+        element,
+        () => {
+          api
+            .deleteCard(id)
+            .then(() => {
+              card.remove();
+            })
+            .catch((err) => console.log(err));
+        }
+      );
+      popupConfirmation.setEventListeners();
+    },
+    handleLike: (id, isLiked) => {
+      const request = isLiked ? api.dislikeCard(id) : api.likeCard(id);
+      request
+        .then((res) => {
+          card.updateLikeState(res);
+        })
+        .catch((err) => console.log(err));
+    },
+  });
+
+  return card;
+}
+
 api
   .getInitialCards()
   .then((res) => {
@@ -27,46 +66,14 @@ api
       {
         data: res,
         renderer: (item) => {
-          const card = new Card({
-            name: item.name,
-            link: item.link,
-            id: item._id,
-            isLiked: item.isLiked,
-            handleCardClick: (item) => {
-              const image = new PopupWithImage(".popup_type_image");
-              image.open(item);
-              image.setEventListeners();
-            },
-            handleTrash: (item, id) => {
-              const popupConfirmation = new PopupWithConfirmation(
-                ".popup_type_delete",
-                item,
-                () => {
-                  api.deleteCard(id).then((res) => {
-                    console.log(res);
-                  });
-                }
-              );
-              popupConfirmation.setEventListeners();
-            },
-            handleLike: (id, isLiked) => {
-              if (isLiked) {
-                api.dislikeCard(id).then((res) => {
-                  card.isLiked(res);
-                });
-              } else {
-                api.likeCard(id).then((res) => {
-                  card.isLiked(res);
-                });
-              }
-            },
-          });
+          const card = createCard(item);
           const cardElement = card.generateCard();
           cardList.addItemStart(cardElement);
         },
       },
       ".elements"
     );
+
     cardList.renderItems();
 
     const popupFormAdd = new PopupWithForm(
@@ -77,33 +84,16 @@ api
           api
             .postCard({ name, link })
             .then((res) => {
-              console.log(res);
-              const card = new Card({
-                name: res.name,
-                link: res.link,
-                handleCardClick: (item) => {
-                  const image = new PopupWithImage(".popup_type_image");
-                  image.open(item);
-                  image.setEventListeners();
-                },
-                handleTrash: (item) => {
-                  const popupConfirmation = new PopupWithConfirmation(
-                    ".popup_type_delete",
-                    item
-                  );
-                  popupConfirmation.setEventListeners();
-                },
-              });
+              const card = createCard(res);
               const cardElement = card.generateCard();
               cardList.addItemEnd(cardElement);
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => console.log(err));
         },
       },
       ".profile__add-button"
     );
+
     popupFormAdd.setEventListeners();
   })
   .catch((err) => {

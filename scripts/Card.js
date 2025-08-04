@@ -26,17 +26,22 @@ export default class Card {
     return cardElement;
   }
 
-  isLiked(res) {
-    if (res.isLiked) {
-      this._likeElement.src = "./images/Union.svg";
-    } else {
-      this._likeElement.src = "./images/like2.svg";
-    }
+  updateLikeState(res) {
+    // if (res.isLiked) {
+    //   this._likeElement.src = "../images/Union.svg";
+    // } else {
+    //   this._likeElement.src = "../images/like2.svg";
+    // }
+    // this._isLiked = res.isLiked;
     this._isLiked = res.isLiked;
+    this._likeElement.src = this._isLiked
+      ? "../images/Union.svg"
+      : "../images/like2.svg";
   }
 
-  _setTrash() {
+  remove() {
     this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
@@ -65,8 +70,8 @@ export default class Card {
     this._cardImage.src = this._link;
 
     this._likeElement.src = this._isLiked
-      ? "./images/Union.svg"
-      : "./images/like2.svg";
+      ? "../images/Union.svg"
+      : "../images/like2.svg";
 
     this._setEventListeners();
 
