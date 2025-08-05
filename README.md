@@ -1,12 +1,11 @@
-# Titulo del proyecto 10
+# Titulo del proyecto 12
 
 TripleTen web_project_around
 
 # Descripción
 
-La principal caracteristica de este proyecto es que se utilizo POO utilizando clases y sus
-caracateristicas asi como javascript modular reutilizando la misma funcionalidad del los proyectos
-anteriores pero adaptandola a POO.
+La principal caracteristica de este proyecto es que se obtiene la informacion por medio de solicitudes
+a la API. Se utilizaron los conceptos de promesas y asincronismo.
 
 # Tecnologias y caracteristicas utilizadas
 
@@ -24,6 +23,9 @@ anteriores pero adaptandola a POO.
 -POO
 -Clases
 -Javascript modular
+-Asincronismo
+-Promesas
+-Api
 
 # Autor
 
