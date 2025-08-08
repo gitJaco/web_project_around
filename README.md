@@ -4,8 +4,8 @@ TripleTen web_project_around
 
 # Descripción
 
-La principal caracteristica de este proyecto es que se obtiene la informacion por medio de solicitudes
-a la API. Se utilizaron los conceptos de promesas y asincronismo.
+La principal caracteristica de este proyecto es que se obtiene la informacion por medio
+de la API. Se utilizaron los conceptos de promesas y asincronismo.
 
 # Tecnologias y caracteristicas utilizadas
 
